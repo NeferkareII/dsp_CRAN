@@ -921,7 +921,7 @@ btf_reg = function(y, X = NULL, evol_error = 'DHS', D = 1, obsSV = "const",
   if(!is.na(match('dhs_mean', mcmc_params)) && evol_error == "DHS") post_dhs_mean = array(NA, c(nsave, p))
   if(!is.na(match('sv_mu', mcmc_params)) && obsSV == "SV") post_sv_mu = rep(NA_real_, nsave)
   if(!is.na(match('sv_phi', mcmc_params)) && obsSV == "SV") post_sv_phi = rep(NA_real_, nsave)
-  if(!is.na(match('sv_sigma', mcmc_params)) && && obsSV == "SV") post_sv_sigma = rep(NA_real_, nsave)
+  if(!is.na(match('sv_sigma', mcmc_params)) && obsSV == "SV") post_sv_sigma = rep(NA_real_, nsave)
   # if(!is.na(match('h', mcmc_params)) && obsSV == "ASV") post_h = array(NA,c(nsave,nT))
   if(!is.na(match('h_smooth', mcmc_params)) && obsSV == "ASV" && nugget_asv) post_h_smooth = array(NA,c(nsave,nT))
   post_loglike = numeric(nsave)
@@ -1032,9 +1032,9 @@ btf_reg = function(y, X = NULL, evol_error = 'DHS', D = 1, obsSV = "const",
         }
         if(!is.na(match('dhs_phi', mcmc_params)) && evol_error == "DHS") post_dhs_phi[isave,] = evolParams$dhs_phi
         if(!is.na(match('dhs_mean', mcmc_params)) && evol_error == "DHS") post_dhs_mean[isave,] = evolParams$dhs_mean
-        if(!is.na(match('sv_phi', mcmc_params)) && && obsSV == "SV") post_sv_phi[isave] = svParams$svParams[2,1]
-        if(!is.na(match('sv_mu', mcmc_params)) && && obsSV == "SV") post_sv_mu[isave] = svParams$svParams[1,1]
-        if(!is.na(match('sv_sigma', mcmc_params)) && && obsSV == "SV") post_sv_sigma[isave] = svParams$svParams[3,1]
+        if(!is.na(match('sv_phi', mcmc_params)) && obsSV == "SV") post_sv_phi[isave] = svParams$svParams[2,1]
+        if(!is.na(match('sv_mu', mcmc_params)) && obsSV == "SV") post_sv_mu[isave] = svParams$svParams[1,1]
+        if(!is.na(match('sv_sigma', mcmc_params)) && obsSV == "SV") post_sv_sigma[isave] = svParams$svParams[3,1]
         # if(!is.na(match('h', mcmc_params)) && obsSV == "ASV") post_h[isave,] = sParams$s_mu
         if(!is.na(match('h_smooth', mcmc_params)) && obsSV == "ASV" && nugget_asv) post_h_smooth[isave,] = sParams$s_mu_sm
         post_loglike[isave] = sum(dnorm(y, mean = mu, sd = sigma_et, log = TRUE))
@@ -1052,9 +1052,9 @@ btf_reg = function(y, X = NULL, evol_error = 'DHS', D = 1, obsSV = "const",
   if(!is.na(match('evol_sigma_t2', mcmc_params))) mcmc_output$evol_sigma_t2 = post_evol_sigma_t2
   if(!is.na(match('dhs_phi', mcmc_params)) && evol_error == "DHS") mcmc_output$dhs_phi = post_dhs_phi
   if(!is.na(match('dhs_mean', mcmc_params)) && evol_error == "DHS") mcmc_output$dhs_mean = post_dhs_mean
-  if(!is.na(match('sv_mu', mcmc_params)) && && obsSV == "SV") mcmc_output$sv_mu = post_sv_mu
-  if(!is.na(match('sv_phi', mcmc_params)) && && obsSV == "SV") mcmc_output$sv_phi = post_sv_phi
-  if(!is.na(match('sv_sigma', mcmc_params)) && && obsSV == "SV") mcmc_output$sv_sigma = post_sv_sigma
+  if(!is.na(match('sv_mu', mcmc_params)) && obsSV == "SV") mcmc_output$sv_mu = post_sv_mu
+  if(!is.na(match('sv_phi', mcmc_params)) && obsSV == "SV") mcmc_output$sv_phi = post_sv_phi
+  if(!is.na(match('sv_sigma', mcmc_params)) && obsSV == "SV") mcmc_output$sv_sigma = post_sv_sigma
   # if(!is.na(match('h', mcmc_params)) && obsSV == "ASV") mcmc_output$h = post_h
   if(!is.na(match('h_smooth', mcmc_params)) && obsSV == "ASV" && nugget_asv) mcmc_output$h_smooth = post_h_smooth
 
