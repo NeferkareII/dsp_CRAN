@@ -52,7 +52,7 @@ predict.dsp <- function(object, cp_thres = 0.5, cp_prop = FALSE, ...){
   cp_list = rep(0, length(object$mcmc_output$omega[1,]))
   D = object$model_spec$arguments$D
 
-  cp_mat <- apply(object$mcmc_output$omega^2, MARGIN = 2, \(samp){samp > exp(object$mcmc_output$gamma)})
+  cp_mat <- apply(object$mcmc_output$omega^2, MARGIN = 2, function(samp){samp > exp(object$mcmc_output$gamma)})
 
   cp_list <- colMeans(cp_mat)
 

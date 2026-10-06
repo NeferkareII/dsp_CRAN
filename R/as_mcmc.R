@@ -135,7 +135,7 @@ get_flatnames <- function(name, dim = NULL, first_index = 1){
     return(name)
   }
 
-  indices <- lapply(dim, \(ind){first_index:(ind + first_index - 1)})
+  indices <- lapply(dim, function(ind){first_index:(ind + first_index - 1)})
 
   # expand.grid() varies the first index fastest, matching column-major order
   grid <- expand.grid(indices, KEEP.OUT.ATTRS = FALSE)

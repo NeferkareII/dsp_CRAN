@@ -59,7 +59,7 @@ summary.dsp <- function(object, pars, probs = c(0.025, 0.25, 0.50, 0.75, 0.975),
   col_names <- c("mean", paste0("q_", round(100*probs, 1)))
   # Calculate the mean and quantiles, but return a list of same length, etc
 
-  out_list <- purrr::map(object$mcmc_output[pars], \(samps) {
+  out_list <- purrr::map(object$mcmc_output[pars], function(samps) {
 
     if (is.null(dim(samps))) {
       # Scalar
